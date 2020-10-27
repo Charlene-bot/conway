@@ -10,3 +10,7 @@ My code starts my initializing the terminal and has two basic modes: play and pa
 
 In paused mode, the user can move the cursor with arrow keys, toggle the state of the cell underneath the cursor by hitting x, take a single step forward in time by hitting n. In play mode, the game of life updates by 1 step every 0.5 seconds. The user cannot move the cursor or edit cells in this mode.
 At ant time, the user can cleanly exit the program by pressing q.
+
+Cited work 
+
+https://stackoverflow.com/questions/10164263/how-to-pass-two-dimensional-array-of-an-unknown-size-to-a-function

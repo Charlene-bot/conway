@@ -1,13 +1,13 @@
-CC = g++
-CCFLAGS = -g -Wall -Werror
+all: app
 
-
-APP = conway
-
-all: $(APP)
-
-$(APP): $(APP).cpp
-	$(CC) $(CCFLAGS)  -o $(APP) $(APP).cpp -lncurses
+app: main.o conway.o
+	g++ -g -Wall -Werror main.o conway.o -o app -lncurses
+main.o: main.cpp
+	g++ -g -c -Wall -Werror main.cpp
+conway.o: conway.cpp
+	g++ -g -c -Wall -Werror conway.cpp
 
 clean:
-	$(RM) $(APP)	
+	rm *.o app
+
+
