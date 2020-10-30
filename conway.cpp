@@ -2,19 +2,17 @@
 
 void initialGrid(vector<vector<int>> &gridOne)
 {
-    vector<int> num; 
     for(int i = 0; i < COLS; i++)
     {
+      vector<int> num; 
       for(int j = 0; j < LINES; j++)
-      {
-        num.push_back(0);
-        gridOne.push_back(num); 
-      }
+        {
+          num.push_back(0);
+        }
+          gridOne.push_back(num); 
     }
 }
-
 void printGrid(vector<vector<int>> &gridOne)
-//void printGrid(std::vector <int> const &gridOne)
 {
   for(int i = 0; i < COLS; i++)
   {
@@ -23,46 +21,58 @@ void printGrid(vector<vector<int>> &gridOne)
         if(gridOne[i][j]== 1)
         {
             mvprintw(j, i, ALIVE); 
-            refresh(); 
         }
         else
         {
             mvprintw(j, i, DEAD); 
-            refresh();
         }
       }
   }
-
 }
-void playmode(int startx, int starty)
+void playmode(vector<vector<int>> & gridOne)
 {
+  int currx = 0; 
+  int curry = 0;
   //Paused mode toggling with the arrow keys
-
-  int key = getch();
-  while(key != 113)
+  while(true)
   {
+   int key = getch(); 
     switch(key)
     {
       case KEY_UP:
-        move(starty-1, startx);
-        refresh();
-      break;
+              if(curry > 0)
+                curry--; 
+               break;
       case KEY_DOWN:
-        //mvprintw(starty + 1, startx,  alive);
-        refresh();
-      break;
+              if(curry < LINES-1)
+                curry++; 
+               break; 
       case KEY_LEFT:
-       // mvprintw(starty, startx - 1, alive);
-        refresh();
-      break;
+              if(currx > 0)
+                currx--;
+               break; 
       case KEY_RIGHT:
-        //mvprintw(starty, startx + 1, alive);
-        refresh();
-      break;
-      default:
-         printw("Wrong input"); 
-        break;
+              if(currx < COLS -1)
+                currx++; 
+               break; 
+      case 'X':
+      case 'x':
+               if(gridOne[currx][curry] == 0)
+                   gridOne[currx][curry] = 1; 
+               else 
+                   gridOne[currx][curry] = 0; 
+               break; 
+       default:
+//              printw("Wrong input"); 
+              break;
       }
-    }
-}
+     
+      printGrid(gridOne);  
+      move(curry, currx); 
+      refresh(); 
+      if(key == 'Q')
+        break; 
+ } 
+      printGrid(gridOne);
+ }
 

@@ -1,22 +1,25 @@
 #include "conway.h"
+
+
+
 int main()
 {
   initscr();
+  clear(); 
+  noecho(); 
+  cbreak(); 
+  nodelay(stdscr, true); 
   keypad(stdscr, true); 
   
   vector<vector<int>> grid; 
-
+   
   initialGrid(grid); 
   printGrid(grid); 
 
-
-//  int startx = 0;
- // int starty = 0;
-
-/*  int ch = getch(); 
-  while(!(ch == 113))
-    playmode(startx, starty); 
-*/
+//  int key = getch(); 
+//  while(key != 'Q')
+  playmode(grid); 
+//  printGrid(grid); 
   refresh(); 
   getch(); 
   endwin();
