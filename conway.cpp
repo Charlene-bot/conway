@@ -1,6 +1,8 @@
 #include "conway.h"
 
-void initialGrid(vector<vector<int>> &gridOne) {
+void initialGrid(vector<vector<int>> &gridOne) 
+{
+    //looping through and initializing 2d vector to 0
     for(int i = 0; i < COLS; i++)
     {
         vector<int> num; 
@@ -68,37 +70,38 @@ void playmode(vector<vector<int>> & gridOne)
 
                 break; 
             case 'p':
+            case 'P':
                 key = play(gridOne); 
-                
                 break; 
-                  
+
             default:
-                //              printw("Wrong input"); 
                 break;
         }
 
         printGrid(gridOne);  
         move(curry, currx); 
         refresh(); 
-        if(key == 'Q')
+        if(key == 'Q' || key == 'q')
             break; 
     } 
     printGrid(gridOne);
 }
+
 int play(vector<vector<int>> & grid)
 {
-  nodelay(stdscr, true); 
-  int ch; 
-  while(1){
-    newworld(grid); 
-    auto refresh_time = chrono::milliseconds(500); 
-    this_thread::sleep_for(refresh_time); 
-    printGrid(grid); 
-    ch = getch(); 
-    if(ch == 'p' || ch == 'q')
-    break; 
-  }  
-  return ch; 
+    nodelay(stdscr, true); 
+    int ch; 
+    while(1)
+    {
+        newworld(grid); 
+        auto refresh_time = chrono::milliseconds(500); 
+        this_thread::sleep_for(refresh_time); 
+        printGrid(grid); 
+        ch = getch(); 
+        if(ch == 'p' || ch == 'q' || ch == 'P' || ch == 'Q')
+            break; 
+    }  
+    return ch; 
 
 }
 
@@ -140,28 +143,11 @@ void newworld(vector<vector<int>> &grid)
                     num.push_back(grid[l][m]); 
             }
         }
-      //fill in new 2D 
-      future.push_back(num); 
+        //fill in new 2D 
+        future.push_back(num); 
     }
-  //update og 
-  grid = future; 
+    //update og 
+    grid = future; 
 }   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

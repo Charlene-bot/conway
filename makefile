@@ -6,8 +6,6 @@ main.o: main.cpp
 	g++ -g -c -Wall -Werror main.cpp
 conway.o: conway.cpp
 	g++ -g -c -Wall -Werror conway.cpp
-
+.PHONY: clean
 clean:
-	rm -f *.o conway
-
-
+	-rm *.o  conway
