@@ -4,24 +4,21 @@
 
 int main()
 {
-  initscr();
-  clear(); 
-  noecho(); 
-  cbreak(); 
-  nodelay(stdscr, true); 
-  keypad(stdscr, true); 
-  
-  vector<vector<int>> grid; 
-   
-  initialGrid(grid); 
-  printGrid(grid); 
+    initscr();
+    clear(); 
+    noecho(); 
+    cbreak(); 
+    nodelay(stdscr, true); 
+    keypad(stdscr, true); 
 
-//  int key = getch(); 
-//  while(key != 'Q')
-  playmode(grid); 
-//  printGrid(grid); 
-  refresh(); 
-  getch(); 
-  endwin();
-  return 0;
+    vector<vector<int>> grid; 
+
+    initialGrid(grid); 
+    printGrid(grid); 
+
+    playmode(grid); 
+    refresh(); 
+    getch(); 
+    endwin();
+    return 0;
 }
